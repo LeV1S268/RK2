@@ -4,25 +4,20 @@ project(ChatRoomObserverPattern)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Отключаем обработку предупреждений о неинициализированных переменных как ошибок
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=maybe-uninitialized")
 
-
-
-
-# Задаем опцию компилятору Google Test для отключения обработки предупреждений о неинициализированных переменных как ошибок
-set(gtest_disable_werror ON CACHE BOOL "" FORCE)
-
-# Загружаем и активируем Google Test
+# GoogleTest
 include(FetchContent)
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/refs/tags/release-1.10.0.tar.gz
 )
+# Загружаем и активируем Google Test
 FetchContent_MakeAvailable(googletest)
 
-
-# Отключаем обработку предупреждений о неинициализированных переменных как ошибок
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=maybe-uninitialized")
-
+# Отключаем обработку предупреждений о неинициализированных переменных как ошибок для Google Test
+target_compile_options(gtest PRIVATE -Wno-error=maybe-uninitialized)
 
 enable_testing()
 
