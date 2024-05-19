@@ -12,9 +12,10 @@ FetchContent_Declare(
 )
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-# Предупреждения о неинициализированных переменных больше не будут обрабатываться как ошибки
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=maybe-uninitialized")
 FetchContent_MakeAvailable(googletest)
+
+# Отключаем обработку предупреждений о неинициализированных переменных как ошибок
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=maybe-uninitialized")
 
 enable_testing()
 
