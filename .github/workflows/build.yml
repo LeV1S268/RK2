@@ -22,7 +22,9 @@ jobs:
     - name: Run tests
       run: |
         cd build
-        ctest
+        ./test1
+        ./test2
+        ./test3
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
