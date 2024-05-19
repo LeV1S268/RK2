@@ -10,9 +10,12 @@ FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/refs/tags/release-1.10.0.tar.gz
 )
-# For Windows: Prevent overriding the parent project's compiler/linker settings
+# Для Windows: Предотвращаем переопределение параметров компилятора/линкера родительского проекта
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
+
+# Отключаем обработку предупреждений как ошибок для Google Test
+target_compile_options(gtest PRIVATE -Wno-error=maybe-uninitialized)
 
 # Отключаем обработку предупреждений о неинициализированных переменных как ошибок
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=maybe-uninitialized")
