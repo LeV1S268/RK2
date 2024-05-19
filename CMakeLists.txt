@@ -23,7 +23,11 @@ enable_testing()
 
 add_executable(chat_room chat_room.cpp)
 add_executable(tests tests.cpp)
+
 target_link_libraries(tests gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(tests)
+
+# Добавляем тесты с помощью CMake
+add_test(NAME Test1 COMMAND tests)
