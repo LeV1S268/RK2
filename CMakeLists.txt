@@ -24,13 +24,13 @@ enable_testing()
 
 # Добавляем исполняемые файлы для тестов
 add_executable(test1 test1.cpp)
-target_link_libraries(test1 gtest_main)
+target_link_libraries(test1 gtest pthread)
 
 add_executable(test2 test2.cpp)
-target_link_libraries(test2 gtest_main)
+target_link_libraries(test2 gtest pthread)
 
 add_executable(test3 test3.cpp)
-target_link_libraries(test3 gtest_main)
+target_link_libraries(test3 gtest pthread)
 
 include(GoogleTest)
 gtest_discover_tests(test1)
