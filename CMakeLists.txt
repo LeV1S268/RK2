@@ -8,21 +8,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/refs/tags/release-1.10.0.tar.gz
+  URL https://github.com/google/googletest/archive/release-1.10.0.tar.gz
 )
 # Для Windows: Предотвращаем переопределение параметров компилятора/линкера родительского проекта
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# Отключаем обработку предупреждений как ошибок для Google Test
-target_compile_options(gtest PRIVATE -Wno-error=maybe-uninitialized)
-
-# Отключаем обработку предупреждений о неинициализированных переменных как ошибок
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=maybe-uninitialized")
-
 enable_testing()
 
-# Добавляем исполняемые файлы для тестов
+# Основной исполняемый файл
+add_executable(chat_room main.cpp)
+target_link_libraries(chat_room pthread)
+
+# Тесты
 add_executable(test1 test1.cpp)
 target_link_libraries(test1 gtest pthread)
 
