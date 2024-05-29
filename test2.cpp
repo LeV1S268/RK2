@@ -14,8 +14,3 @@ TEST(ChatRoomTest, MultipleUsersTest) {
 
     EXPECT_EQ(output, "[User1][TestRoom] Hello, Users!\n[User2][TestRoom] Hello, Users!\n");
 }
-
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
