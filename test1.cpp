@@ -12,3 +12,8 @@ TEST(ChatRoomTest, SendMessageTest) {
 
     EXPECT_EQ(output, "[TestUser][TestRoom] Hello, World!\n");
 }
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
