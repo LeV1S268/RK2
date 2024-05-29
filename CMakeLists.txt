@@ -3,6 +3,9 @@ project(ChatRoom)
 
 set(CMAKE_CXX_STANDARD 17)
 
+# Add source files
+add_executable(chat_room chat_room.cpp)
+
 # Add Google Test
 include(FetchContent)
 FetchContent_Declare(
@@ -14,7 +17,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # Add test files
-add_executable(chat_room_tests tests.cpp)
+add_executable(chat_room_tests tests/chat_room_tests.cpp)
 
 # Link Google Test libraries
 target_link_libraries(chat_room_tests gtest gtest_main)
