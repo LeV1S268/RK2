@@ -1,36 +1,28 @@
 cmake_minimum_required(VERSION 3.10)
-project(ChatRoomObserverPattern)
+project(ChatRoom)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# GoogleTest
+# Add source files
+add_executable(chat_room main.cpp AccessKey.cpp ChatRoom.cpp User.cpp)
+
+# Add Google Test
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/release-1.10.0.tar.gz
+  URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
 )
-# Для Windows: Предотвращаем переопределение параметров компилятора/линкера родительского проекта
+# For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+# Add test files
+add_executable(chat_room_tests tests/chat_room_tests.cpp)
+
+# Link Google Test libraries
+target_link_libraries(chat_room_tests gtest gtest_main)
+target_link_libraries(chat_room_tests chat_room)
+
+# Enable testing
 enable_testing()
-
-# Основной исполняемый файл
-add_executable(chat_room main.cpp)
-target_link_libraries(chat_room pthread)
-
-# Тесты
-add_executable(test1 test1.cpp)
-target_link_libraries(test1 gtest pthread)
-
-add_executable(test2 test2.cpp)
-target_link_libraries(test2 gtest pthread)
-
-add_executable(test3 test3.cpp)
-target_link_libraries(test3 gtest pthread)
-
-include(GoogleTest)
-gtest_discover_tests(test1)
-gtest_discover_tests(test2)
-gtest_discover_tests(test3)
+add_test(NAME ChatRoomTest COMMAND chat_room_tests)
