@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "chat_room.cpp"
+
 TEST(ChatRoomTest, MultipleUsersTest) {
     ChatRoom chatRoom("TestRoom");
     User user1("User1");
@@ -12,4 +13,9 @@ TEST(ChatRoomTest, MultipleUsersTest) {
     std::string output = testing::internal::GetCapturedStdout();
 
     EXPECT_EQ(output, "[User1][TestRoom] Hello, Users!\n[User2][TestRoom] Hello, Users!\n");
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
