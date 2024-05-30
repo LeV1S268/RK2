@@ -108,7 +108,7 @@ private:
     Observer Pattern은 어떤 객체의 상태가 변할 때, 그 객체에 의존성을 가진 다른
     객체들이 그 변화를 통지받고 자동으로 갱신될 수 있도록 해줍니다.
 */
-int main()
+/*int main()
 {
     ChatRoom chatRoom_1("ChatRoom_1"), chatRoom_2("ChatRoom_2");
     User user_1("User_1"), user_2("User_2"), user_3("User_3");
@@ -120,4 +120,4 @@ int main()
 
     chatRoom_1.SendMessage("Hi, nice to meet you!");
     chatRoom_2.SendMessage("I'm Taeguk Kwon!");
-}
+}*/
