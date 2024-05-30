@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "chat_room.h"
+#include "chat_room.cpp"
 
 TEST(ChatRoomTest, SendMessageTest) {
     ChatRoom chatRoom("TestRoom");
