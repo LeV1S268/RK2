@@ -21,7 +21,7 @@ add_executable(test1 test1.cpp)
 add_executable(test2 test2.cpp)
 add_executable(test3 test3.cpp)
 
-# Link Google Test libraries
+# Link Google Test libraries and chat_room_lib
 target_link_libraries(test1 gtest gtest_main chat_room_lib)
 target_link_libraries(test2 gtest gtest_main chat_room_lib)
 target_link_libraries(test3 gtest gtest_main chat_room_lib)
