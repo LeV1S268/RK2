@@ -27,6 +27,7 @@ FetchContent_MakeAvailable(googletest)
 
 # Создает исполняемый файл с именем `tests` из исходного файла `test.cpp`.
 add_executable(tests test.cpp)
+add_executable(mt chat_room.cpp)
 
 # Связывает исполняемый файл `tests` с библиотеками Google Test и статической библиотекой `chat_room_lib`.
 target_link_libraries(tests gtest gtest_main chat_room_lib)
