@@ -19,7 +19,7 @@ jobs:
     - name: Build  # Название шага: Сборка
       run: cmake --build build  # Запуск команды для сборки проекта в каталоге build
     - name: Run main
-      run: ./_build/chat_room
+      run: ./build/mt
 
     - name: Run tests  # Название шага: Запуск тестов
       run: cmake --build build --target test -- ARGS=--verbose  # Запуск команды для запуска тестов и вывода подробной информации
