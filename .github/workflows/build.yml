@@ -1,29 +1,29 @@
-name: CMake
+name: CMake  # Название действия
 
-on: [push, pull_request]
+on: [push, pull_request]  # Триггеры для запуска действия: при push или pull_request
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build:  # Название задания
+    runs-on: ubuntu-latest  # Используемая платформа для выполнения задания - последняя версия Ubuntu
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - name: Checkout repository  # Название шага: Проверка репозитория
+      uses: actions/checkout@v2  # Использует действие для проверки исходного кода из репозитория
 
-    - name: Install CMake
-      uses: jwlawson/actions-setup-cmake@v1.10
+    - name: Install CMake  # Название шага: Установка CMake
+      uses: jwlawson/actions-setup-cmake@v1.10  # Использует действие для установки CMake
 
-    - name: Configure CMake
-      run: cmake -B build
+    - name: Configure CMake  # Название шага: Конфигурация CMake
+      run: cmake -B build  # Запуск команды для конфигурирования CMake и создания каталога сборки (build)
 
-    - name: Build
-      run: cmake --build build
+    - name: Build  # Название шага: Сборка
+      run: cmake --build build  # Запуск команды для сборки проекта в каталоге build
 
-    - name: Run tests
-      run: cmake --build build --target test -- ARGS=--verbose
+    - name: Run tests  # Название шага: Запуск тестов
+      run: cmake --build build --target test -- ARGS=--verbose  # Запуск команды для запуска тестов и вывода подробной информации
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
+    - name: Upload artifact  # Название шага: Загрузка артефакта
+      uses: actions/upload-artifact@v2  # Использует действие для загрузки артефактов сборки
       with:
-        name: chat_room
-        path: build
+        name: chat_room  # Имя артефакта
+        path: build  # Путь к каталогу сборки для загрузки артефактов
